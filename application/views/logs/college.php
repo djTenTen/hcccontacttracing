@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,23 +39,17 @@
             overflow-x: hidden;
             margin: 0;">
 
-    <div class="container-fluid bgmonitoring">
-            <div 
-            class="row justify-content-center align-items-center col-xl-6" 
-            style="margin-bottom: 0px;">
-                <div class="justify-content-center">
-                    <img 
-                    class="logo" 
-                    src="image/logo4.png" 
-                    alt="logo" 
-                    srcset="" 
-                    style="height: 150px;">
+    <div class="container-fluid bg-primary">
+            <div class="row justify-content-center align-items-center col-xl-6" style="margin-bottom: 0px;">
+                <div class="col-4 justify-content-center">
+                    <img class="logo" src="image/logo4.png" alt="logo" srcset="" style="height: 100px;">
                 </div>
-
-                <div>
-                    <h2>Holy Cross College</h2>      
-                    <p>Sta. Lucia Sta. Ana Pampanga</p>
-                    <h5>Contact Tracing App</h5>  
+                
+                <div class="col-8 text-white">
+                    <h4>Holy Cross College</h4>      
+                    <p style="font-size: 15px;">Sta. Lucia Sta. Ana Pampanga</p>
+                    <h5>Contact Tracing App</h5>
+                    <h5>College Portal</h5>  
                 </div>
     
             </div>
@@ -65,66 +58,37 @@
 class="container-fluid" 
 style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); background-color: aliceblue;">
         
-        
+        <?php
+            if($this->session->flashdata('Added') != null){
+                echo '<div class="alert alert-success">
+                <strong>Success! </strong> Successfully registered 
+            </div>';
+            }
+        ?>
 
-        <div id="CateEMPLOYEE" class="desc collapse" style="display: none;">
-            <div class="form marg">
-            <form action="index.php" method="post" class="form-inline">
-                <!-- <input  
-                type="text" 
-                class="form-control mb-2 mr-sm-2 form-control-sm col-9" 
-                placeholder="Employee Number" 
-                id="empID" 
-                name="empID" 
-                style="text-transform:uppercase" required> -->
+        <?= form_open('college');?>
 
-
-                    <label for="email">Employee:</label>
-                    <select name="employee" class="form-control form-control-sm" required>
-                        <option value="" selected>Employee</option>
-                            <?php while($emp = mysqli_fetch_array($result1)){?>
-                                <option value="<?= $emp['empID']?>"><?= $emp['Name']?></option>
+            <div class="container pt-3">
+                <div class="row">
+                    <div class="col-10 row">
+                        <select name="studID" id="" class="form form-control">
+                            <option value="" selected>Type your Name</option>
+                            <?php foreach($student as $row){?>
+                                <option value="<?= $row['AdmissionID']?>"><?= $row['FullName']?></option>
                             <?php }?>
-                    </select>
-
-                <button 
-                type="submit" 
-                id="searc" 
-                name="searc" 
-                value="searc" 
-                class="btn btn-primary btn-sm mb-2 col-3"><span class="fas fa-search" style="font-size:17px"></span></button>
-                
-            
-            </form>
+                        </select>
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary" type="submit"><span class="fas fa-search"></button>
+                    </div>
+                </div>
             </div>
-        </div>
 
+        <?= form_close();?>
+
+        <br><br>
         
-        
-        <form 
-        class="form marg row" 
-        action="index.php" 
-        method="post">
-
-
-        <div class="form form-inline justify-content-center" id="myRadioGroup">
-            <div class="form-check col-4">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" id="Category" name="category" value="STUDENT">Student
-                </label>
-            </div>
-            <div class="form-check col-4">
-                <label class="form-check-label">
-                    <input type="radio" data-toggle="collapse" data-target="#CateEMPLOYEE" class="form-check-input" id="category" name="category" Value="EMPLOYEE" <?php if(isset($_POST['searc'])){echo "checked";}?> required>Employee
-                </label>
-            </div>
-            <div class="form-check col-4">
-                <label class="form-check-label">
-                    <input type="radio" class="form-check-input" id="category" name="category" Value="CLIENT" required>Visitor/Client
-                </label>
-            </div>
-        </div>
-        
+        <?= form_open('logstudentcollege');?>
 
             <div class="form-inline col-12">
 
@@ -136,7 +100,7 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
                     id="lname" 
                     name="lname" 
                     style="text-transform:uppercase"
-                    value="<?php if(empty($row[0])){echo "";}else{echo $row[0];} ?>" required>
+                    value="<?php if(!empty($ln)){echo $ln;}?>" required>
 
                     <label class="mr-sm-2">First Name:</label>
                     <input type="text" 
@@ -145,7 +109,7 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
                     id="fname" 
                     name="fname" 
                     style="text-transform:uppercase"
-                    value="<?php if(empty($row[1])){echo "";}else{echo $row[1];}?>" required>
+                    value="<?php if(!empty($fn)){echo $fn;}?>" required>
 
                     <label class="mr-sm-2">Middle Initial:</label>
                     <input 
@@ -155,7 +119,38 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
                     id="mname" 
                     name="mname" 
                     style="text-transform:uppercase"
-                    value="<?php if(empty($row[2])){echo "";}else{echo $row[2];} ?>">
+                    value="<?php if(!empty($mn)){echo $mn;}?>">
+
+                    <label class="mr-sm-2">Course:</label>
+
+                    <select name="course" id="course" class="form-control mb-2 mr-sm-2 form-control-sm" required>
+                        <option value="<?php if(!empty($coursecode)){echo $coursecode;}?>" selected><?php if(!empty($coursecode)){echo $coursecode;}else{echo 'Select Course';}?></option>
+                        <?php foreach($course as $row2){?>
+                            <option value="<?= $row2['CourseCode']?>"><?= $row2['CourseCode'].'-'.$row2['CourseDesc'];?></option>
+                        <?php }?>
+                    </select>
+
+
+                    <label class="mr-sm-2">Level:</label>
+
+                    <select name="level" id="level" class="form-control mb-2 mr-sm-2 form-control-sm" required>
+                        <option value="<?php if(!empty($level)){echo $level;}?>" selected><?php if(!empty($level)){echo $level;}else{echo 'Select Level';}?></option>
+                        <option value="1ST YEAR">1ST YEAR</option>
+                        <option value="2ND YEAR">2ND YEAR</option>
+                        <option value="3RD YEAR">3RD YEAR</option>
+                        <option value="4TH YEAR">4TH YEAR</option>
+                    </select>
+
+
+                    <label class="mr-sm-2">Section:</label>
+                    <input 
+                    type="text" 
+                    class="form-control mb-2 mr-sm-2 form-control-sm" 
+                    placeholder="Enter middle name" 
+                    id="section" 
+                    name="section" 
+                    style="text-transform:uppercase"
+                    value="<?php if(!empty($section)){echo $section;}?>" required>
 
                     <label class="mr-sm-2">Home Address:</label>
                     <input 
@@ -165,7 +160,7 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
                     id="address" 
                     name="address" 
                     style="text-transform:uppercase"
-                    value="<?php if(empty($row[3])){echo "";}else{echo $row[3];}?>" required>
+                    value="<?php if(!empty($address)){echo $address;}?>" required>
 
                     <label class="mr-sm-2">Contact:</label>
                     <input 
@@ -176,7 +171,7 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
                     id="contact" 
                     name="contact" 
                     style="text-transform:uppercase"
-                    value="<?php if(empty($row[4])){echo "";}else{echo $row[4];}?>" required>
+                    value="<?php if(!empty($contact)){echo $contact;}?>" required>
 
                     <label class="mr-sm-2">Email Address:</label>
                     <input 
@@ -185,7 +180,7 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
                     placeholder="Optional" 
                     id="email" 
                     name="email"
-                    value="<?php if(empty($row[5])){echo "";}else{echo $row[5];}?>">
+                    value="">
                     
             </div>
 
@@ -381,12 +376,12 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
                     <button 
                     type="submit" 
                     id="submit" 
-                    name="submit" 
+                    name="logstud" 
                     value="submit" 
                     class="btn btn-primary mb-2">Submit</button>
                 </div>
             </div>
-        </form>
+        <?= form_close();?>
 </div>
 
     <div class="container-fluid bgmonitoring">
@@ -400,10 +395,6 @@ style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.
         </div>
     </div>
     
-
-    
-    
-
 
     <script>
         $(document).ready(function() {
