@@ -93,9 +93,9 @@
             </div>
 
 
-            <div class="card m-3" style="background-image: url(image/employee.jpg); background-size: 150px; background-position: right; background-repeat: no-repeat; width:150px;background-color:rgba(255,255,255,0.9) ;box-shadow: 0 4px 8px 0 rgba(13, 14, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5); border-radius: 25px;">
+            <div class="card m-3" style="background-image: url(); background-size: 150px; background-position: right; background-repeat: no-repeat; width:150px;background-color:rgba(255,255,255,0.9) ;box-shadow: 0 4px 8px 0 rgba(13, 14, 0, 0.5), 0 6px 20px 0 rgba(0, 0, 0, 0.5); border-radius: 25px;">
                 <div class="card-body">
-                    <h4 class="card-title text-white">Employee</h4>
+                    <h4 class="card-title">Employee</h4>
                     <br><br><br>
                     <a href="employee" class="stretched-link"></a>
                 </div>
