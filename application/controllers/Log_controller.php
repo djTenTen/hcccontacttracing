@@ -6,13 +6,13 @@ class Log_controller extends CI_Controller{
 
         $page = 'selectdpt';
 
-        if(!file_exists(APPPATH.'/views/logs/'.$page.'.php')){
+        if(!file_exists(APPPATH.'views/contact/'.$page.'.php')){
             show_404();
         }else{
                 
             $data['title'] = "Select Category";
-
-            $this->load->view('logs/'.$page, $data);
+        
+            $this->load->view('contact/'.$page, $data);
             
         }
       
@@ -25,7 +25,7 @@ class Log_controller extends CI_Controller{
        
         $page = 'employee';
 
-        if(!file_exists(APPPATH.'/views/logs/'.$page.'.php')){
+        if(!file_exists(APPPATH.'views/contact/'.$page.'.php')){
             show_404();
         }else{
                 
@@ -35,7 +35,7 @@ class Log_controller extends CI_Controller{
 
             if(empty($empID)){
                 $data['employee'] = $this->Log_model->getEmployee();
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }else{
                 $data['employee'] = $this->Log_model->getEmployee();
                 $emp = $this->Log_model->getEmployeebyID($empID);
@@ -44,7 +44,7 @@ class Log_controller extends CI_Controller{
                 $data['mn'] = $emp['Mname'];
                 $data['address'] = $emp['Address'];
                 $data['contact'] = $emp['Contact'];
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }
 
 
@@ -80,7 +80,7 @@ class Log_controller extends CI_Controller{
        
         $page = 'college';
 
-        if(!file_exists(APPPATH.'/views/logs/'.$page.'.php')){
+        if(!file_exists(APPPATH.'views/contact/'.$page.'.php')){
             show_404();
         }else{
                 
@@ -91,7 +91,7 @@ class Log_controller extends CI_Controller{
                 $data['student'] = $this->Log_model->getStudentcollege();
                 $data['course'] = $this->Log_model->getStudentcollege();
                 
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }else{
                 $data['student'] = $this->Log_model->getStudentcollege();
                 $data['course'] = $this->Log_model->getCourse();
@@ -105,7 +105,7 @@ class Log_controller extends CI_Controller{
                 $data['address'] = $std['Address'];
                 $data['contact'] = $std['Contact'];
 
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }
 
 
@@ -152,7 +152,7 @@ class Log_controller extends CI_Controller{
        
         $page = 'seniorhigh';
 
-        if(!file_exists(APPPATH.'/views/logs/'.$page.'.php')){
+        if(!file_exists(APPPATH.'views/contact/'.$page.'.php')){
             show_404();
         }else{
                 
@@ -161,7 +161,7 @@ class Log_controller extends CI_Controller{
 
             if(empty($studID)){
                 $data['student'] = $this->Log_model->getStudentSeniorhigh();
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }else{
                 $data['student'] = $this->Log_model->getStudentSeniorhigh();
                 $std = $this->Log_model->getStudentSeniorhighbyID($studID);
@@ -172,7 +172,7 @@ class Log_controller extends CI_Controller{
                 $data['address'] = $std['Address'];
                 $data['contact'] = $std['Contact'];
 
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }
 
 
@@ -218,7 +218,7 @@ class Log_controller extends CI_Controller{
        
         $page = 'juniorhigh';
 
-        if(!file_exists(APPPATH.'/views/logs/'.$page.'.php')){
+        if(!file_exists(APPPATH.'views/contact/'.$page.'.php')){
             show_404();
         }else{
                 
@@ -227,7 +227,7 @@ class Log_controller extends CI_Controller{
 
             if(empty($studID)){
                 $data['student'] = $this->Log_model->getStudentJuniorhigh();
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }else{
                 $data['student'] = $this->Log_model->getStudentJuniorhigh();
                 $std = $this->Log_model->getStudentJuniorhighbyID($studID);
@@ -237,7 +237,7 @@ class Log_controller extends CI_Controller{
                 $data['address'] = $std['Address'];
                 $data['contact'] = $std['Contact'];
 
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }
 
 
@@ -278,7 +278,7 @@ class Log_controller extends CI_Controller{
        
         $page = 'gradeschool';
 
-        if(!file_exists(APPPATH.'/views/logs/'.$page.'.php')){
+        if(!file_exists(APPPATH.'views/contact/'.$page.'.php')){
             show_404();
         }else{
                 
@@ -287,7 +287,7 @@ class Log_controller extends CI_Controller{
 
             if(empty($studID)){
                 $data['student'] = $this->Log_model->getStudentGradeschool();
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }else{
                 $data['student'] = $this->Log_model->getStudentGradeschool();
                 $std = $this->Log_model->getStudentGradeschoolbyID($studID);
@@ -297,7 +297,7 @@ class Log_controller extends CI_Controller{
                 $data['address'] = $std['Address'];
                 $data['contact'] = $std['Contact'];
 
-                $this->load->view('logs/'.$page, $data);
+                $this->load->view('contact/'.$page, $data);
             }
 
 
